@@ -106,7 +106,7 @@ Qpdf.decrypt = function(input, password, callback) {
 };
 
 
-Qpdf.decrypt_master = function(inputgi, callback) {
+Qpdf.decrypt_master = function(input, callback) {
   if (!input) return handleError(new Error('Specify input file'), callback);
   // if (!password) return handleError(new Error('Password missing'), callback);
 
