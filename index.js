@@ -106,28 +106,6 @@ Qpdf.decrypt = function(input, password, callback) {
 };
 
 
-Qpdf.decrypt_master = function(input, callback) {
-  if (!input) return handleError(new Error('Specify input file'), callback);
-  // if (!password) return handleError(new Error('Password missing'), callback);
-
-  var args = [Qpdf.command, '--decrypt'];
-
-  // Password
-  // args.push('--password=' + password);
-
-  // Input file path
-  args.push(input);
-
-  // Print PDf on stdout
-  args.push('-');
-
-  // Execute command and return stdout for pipe
-  var outputStream = executeCommand(args, callback);
-  if (outputStream) {
-    return outputStream;
-  }
-};
-
 function executeCommand(args, callback) {
   var child;
 
