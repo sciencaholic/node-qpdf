@@ -105,6 +105,27 @@ Qpdf.decrypt = function(input, password, callback) {
   }
 };
 
+// Function for decrypting an input file to an output file without password 
+// (some pdfs are encrypted with master password, not user password, 
+// which restrict some functions to be performed on them, like that of pdf2table library)
+Qpdf.decrypt_master = function(input, output, callback) {
+  if (!input) return handleError(new Error('Specify input file'), callback);
+
+  var args = [Qpdf.command, '--decrypt'];
+
+  // Input file path
+  args.push(input);
+
+  // Output file path
+  args.push(output);
+
+  // Execute command and return stdout for pipe
+  var outputStream = executeCommand(args, callback);
+  if (outputStream) {
+    return outputStream;
+  }
+};
+
 
 function executeCommand(args, callback) {
   var child;
