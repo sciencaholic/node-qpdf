@@ -110,6 +110,7 @@ Qpdf.decrypt = function(input, password, callback) {
 // which restrict some functions to be performed on them, like that of pdf2table library)
 Qpdf.decrypt_master = function(input, output, callback) {
   if (!input) return handleError(new Error('Specify input file'), callback);
+  if (!output) return handleError(new Error('Specify output file'), callback);
 
   var args = [Qpdf.command, '--decrypt'];
 
